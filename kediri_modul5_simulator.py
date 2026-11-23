@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 CHILI-CHAIN (KEDIRI VALUECHAIN) - Sistem Pendukung Keputusan & Layanan Rantai Pasok Cabai Rawit
-Mobile-First & Responsive Edition (Optimal di Layar HP maupun Desktop)
+Mobile-First & Responsive Edition dengan Welcome Portal Profesional
 Untuk Dinas Pertanian, TPID, Petani, dan Pelaku Usaha Kabupaten Kediri
 
 Jalankan:
@@ -262,7 +262,7 @@ def muat_pendukung():
 
 
 # ----------------------------------------------------------------------------
-# 4. DESAIN MOBILE-FIRST & RESPONSIVE UNTUK TAMPILAN HP (SMARTPHONE)
+# 4. DESAIN CSS & WELCOME PORTAL PROFESIONAL
 # ----------------------------------------------------------------------------
 def inject_custom_css(st):
     st.markdown("""
@@ -276,11 +276,11 @@ def inject_custom_css(st):
         }
         .stApp { background-color: #F1F5F9; }
         .block-container {
-            padding-top: 0.65rem !important;
+            padding-top: 0.75rem !important;
             padding-bottom: 2.5rem !important;
-            padding-left: 0.85rem !important;
-            padding-right: 0.85rem !important;
-            max-width: 1200px;
+            padding-left: 0.9rem !important;
+            padding-right: 0.9rem !important;
+            max-width: 1180px;
         }
         #MainMenu, footer {visibility: hidden;}
         header[data-testid="stHeader"] {
@@ -288,6 +288,87 @@ def inject_custom_css(st):
             backdrop-filter: blur(8px);
             height: 2.6rem;
         }
+
+        /* Welcome Screen Hero */
+        .welcome-shell {
+            background: linear-gradient(135deg, #052E16 0%, #065F46 52%, #991B1B 115%);
+            border-radius: 22px;
+            padding: 2.1rem 1.8rem;
+            color: #FFFFFF;
+            box-shadow: 0 20px 35px -10px rgba(6, 78, 59, 0.35);
+            margin-bottom: 1.15rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .welcome-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 0.85rem;
+        }
+        .welcome-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin: 0 0 0.65rem 0;
+            color: #FFFFFF;
+        }
+        .welcome-desc {
+            font-size: 0.94rem;
+            color: #E2E8F0;
+            line-height: 1.55;
+            max-width: 760px;
+            margin: 0 0 1.25rem 0;
+        }
+        .welcome-stats-bar {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.65rem;
+        }
+        .w-stat-item {
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            padding: 0.65rem 0.85rem;
+        }
+        .w-stat-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+        .w-stat-lbl {
+            font-size: 0.72rem;
+            color: #CBD5E1;
+            margin-top: 0.1rem;
+        }
+
+        /* Role Selection Cards on Welcome Screen */
+        .role-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 1.1rem 1.15rem;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+            height: 100%;
+            margin-bottom: 0.45rem;
+        }
+        .role-icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem; margin-bottom: 0.65rem;
+        }
+        .role-title { font-size: 0.98rem; font-weight: 800; color: #0F172A; margin-bottom: 0.25rem; }
+        .role-desc { font-size: 0.80rem; color: #475569; line-height: 1.45; margin-bottom: 0.5rem; }
 
         /* Mobile App Header Bar */
         .mobile-appbar {
@@ -315,7 +396,7 @@ def inject_custom_css(st):
             white-space: nowrap;
         }
 
-        /* Compact Mobile Hero Card */
+        /* Compact Hero Card */
         .hero-mobile {
             background: linear-gradient(135deg, #064E3B 0%, #047857 52%, #B91C1C 115%);
             border-radius: 16px;
@@ -407,12 +488,11 @@ def inject_custom_css(st):
             padding: 0.22rem 0.55rem; border-radius: 8px; margin: 0.15rem 0.2rem 0.15rem 0;
         }
 
-        /* Touch-friendly Buttons & Inputs */
         .stButton > button {
-            min-height: 42px !important;
-            border-radius: 10px !important;
+            min-height: 44px !important;
+            border-radius: 11px !important;
             font-weight: 700 !important;
-            font-size: 0.84rem !important;
+            font-size: 0.85rem !important;
         }
         div[data-testid="stExpander"] {
             background-color: #FFFFFF;
@@ -422,7 +502,6 @@ def inject_custom_css(st):
             margin-bottom: 0.75rem;
         }
 
-        /* Scrollable Mobile Navigation Tabs */
         .stTabs [data-baseweb="tab-list"] {
             gap: 6px;
             overflow-x: auto;
@@ -450,9 +529,10 @@ def inject_custom_css(st):
             border-bottom: 2.5px solid #059669 !important;
         }
 
-        /* Desktop enhancement when opened on wide screen */
         @media (min-width: 768px) {
             .block-container { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+            .welcome-title { font-size: 2.35rem; }
+            .welcome-stats-bar { grid-template-columns: repeat(4, 1fr); }
             .hero-title { font-size: 1.5rem; }
             .kpi-grid-2x2 { grid-template-columns: repeat(4, 1fr); gap: 0.85rem; }
             .kpi-value { font-size: 1.5rem; }
@@ -475,8 +555,92 @@ def gaya_plotly_mobile(fig, tinggi=320):
     return fig
 
 
+def render_welcome_portal(st):
+    st.markdown("""
+    <div class="welcome-shell">
+        <div class="welcome-pill">🌶️ CHILI-CHAIN • KEDIRI VALUECHAIN v2.0</div>
+        <h1 class="welcome-title">Selamat Datang di Sistem Pendukung Keputusan Rantai Pasok Cabai Rawit</h1>
+        <p class="welcome-desc">
+            Platform analitik spasial dan simulasi infrastruktur pascapanen (<b>Sub Terminal Agribisnis &amp; Cold Storage</b>)
+            berbasis penginderaan jauh, elevasi DEM 30 m, dan jaringan jalan nyata untuk pengendalian inflasi pangan Kabupaten Kediri.
+        </p>
+        <div class="welcome-stats-bar">
+            <div class="w-stat-item">
+                <div class="w-stat-num">26 Kec.</div>
+                <div class="w-stat-lbl">Cakupan Analisis Kabupaten</div>
+            </div>
+            <div class="w-stat-item">
+                <div class="w-stat-num">95,6 Rb t</div>
+                <div class="w-stat-lbl">Produksi Rata-Rata / Tahun</div>
+            </div>
+            <div class="w-stat-item">
+                <div class="w-stat-num">-59,5%</div>
+                <div class="w-stat-lbl">Pemangkasan Waktu (2 Unit)</div>
+            </div>
+            <div class="w-stat-item">
+                <div class="w-stat-num">3.000 t</div>
+                <div class="w-stat-lbl">Potensi Susut Dicegah / Th</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown(
+        "<div style='font-size:0.95rem;font-weight:800;color:#0F172A;margin:0.2rem 0 0.65rem 0;'>"
+        "Pilih Mode Akses Sesuai Kebutuhan Anda:</div>",
+        unsafe_allow_html=True,
+    )
+
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown("""
+        <div class="role-card">
+            <div class="role-icon" style="background:#DCFCE7;color:#166534;">🏛️</div>
+            <div class="role-title">TPID &amp; Dinas Pertanian</div>
+            <div class="role-desc">Simulasi penempatan 1–4 unit STA/Cold Storage, cakupan layanan ≤30 menit, dan peta pengalihan arus pasokan.</div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Masuk Dashboard Kebijakan →", key="btn_tpid", type="primary", use_container_width=True):
+            st.session_state["entered_app"] = True
+            st.session_state["user_role"] = "TPID & Dinas Pertanian"
+            st.rerun()
+
+    with c2:
+        st.markdown("""
+        <div class="role-card">
+            <div class="role-icon" style="background:#FEE2E2;color:#991B1B;">🚜</div>
+            <div class="role-title">Petani &amp; Pengepul Cabai</div>
+            <div class="role-desc">Cek titik setor panen terdekat dari kecamatan kebun Anda, estimasi waktu angkut, dan penghematan susut bobot.</div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Buka Kalkulator Rute Panen →", key="btn_petani", use_container_width=True):
+            st.session_state["entered_app"] = True
+            st.session_state["user_role"] = "Petani & Pengepul"
+            st.rerun()
+
+    with c3:
+        st.markdown("""
+        <div class="role-card">
+            <div class="role-icon" style="background:#E0F2FE;color:#075985;">📊</div>
+            <div class="role-title">Peneliti &amp; Evaluasi Data</div>
+            <div class="role-desc">Eksplorasi indeks multikriteria SAIPI, sensitivitas 2.000 iterasi Monte Carlo, dan unduh dataset terpadu 26 kecamatan.</div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Lihat Data & Metodologi →", key="btn_riset", use_container_width=True):
+            st.session_state["entered_app"] = True
+            st.session_state["user_role"] = "Peneliti & Akademisi"
+            st.rerun()
+
+    st.markdown(
+        "<div style='text-align:center;font-size:0.74rem;color:#64748B;margin-top:1.1rem;'>"
+        "Dikembangkan oleh Tim Peneliti <b>CHILI-CHAIN</b> • LKTI GenBI 15th Anniversary 2026 • KPw Bank Indonesia Kediri"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
+
 # ----------------------------------------------------------------------------
-# 5. DASHBOARD UTAMA (MOBILE-FIRST LAYOUT)
+# 5. DASHBOARD UTAMA
 # ----------------------------------------------------------------------------
 def main():
     import streamlit as st
@@ -490,15 +654,23 @@ def main():
         sys.exit(0)
 
     st.set_page_config(
-        page_title="CHILI-CHAIN Mobile | Rantai Pasok Cabai Rawit Kediri",
+        page_title="CHILI-CHAIN | Rantai Pasok Cabai Rawit Kediri",
         page_icon="🌶️",
         layout="centered",
         initial_sidebar_state="collapsed",
     )
     inject_custom_css(st)
 
+    if "entered_app" not in st.session_state:
+        st.session_state["entered_app"] = False
+    if "user_role" not in st.session_state:
+        st.session_state["user_role"] = "TPID & Dinas Pertanian"
     if "preset_k" not in st.session_state:
         st.session_state["preset_k"] = 2
+
+    if not st.session_state["entered_app"]:
+        render_welcome_portal(st)
+        return
 
     try:
         T_base = muat_atau_bangun_matriks()
@@ -508,24 +680,32 @@ def main():
         st.stop()
         return
 
-    # --- MOBILE APP TOP BAR ---
-    st.markdown("""
-    <div class="mobile-appbar">
-        <div class="brand-left">
-            <div class="chili-logo-box">🌶️</div>
-            <div>
-                <div style="font-weight:800;font-size:0.95rem;color:#0F172A;line-height:1.15;">CHILI-CHAIN</div>
-                <div style="font-size:0.70rem;color:#64748B;">Kediri ValueChain • TPID & Petani</div>
+    # --- TOP BAR DENGAN TOMBOL KEMBALI KE WELCOME ---
+    col_brand, col_home = st.columns([4, 1.3])
+    with col_brand:
+        st.markdown(f"""
+        <div class="mobile-appbar" style="margin-bottom:0;">
+            <div class="brand-left">
+                <div class="chili-logo-box">🌶️</div>
+                <div>
+                    <div style="font-weight:800;font-size:0.95rem;color:#0F172A;line-height:1.15;">CHILI-CHAIN</div>
+                    <div style="font-size:0.70rem;color:#64748B;">Mode: {st.session_state["user_role"]}</div>
+                </div>
             </div>
+            <div class="live-pill">● 26 Kec • Live</div>
         </div>
-        <div class="live-pill">● 26 Kec • Live</div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+    with col_home:
+        if st.button("🏠 Beranda", use_container_width=True):
+            st.session_state["entered_app"] = False
+            st.rerun()
+
+    st.markdown("<div style='height:0.55rem;'></div>", unsafe_allow_html=True)
 
     # --- COMPACT HERO BANNER ---
     st.markdown("""
     <div class="hero-mobile">
-        <div class="hero-badge">📱 Edisi Mobile • Kab. Kediri</div>
+        <div class="hero-badge">📱 Kediri ValueChain • Kab. Kediri</div>
         <h1 class="hero-title">Optimasi Rantai Pasok & Infrastruktur Cabai Rawit</h1>
         <p class="hero-sub">
             Simulasi lokasi <b>STA & Cold Storage</b> bagi TPID/Dinas Pertanian serta panduan <b>rute setor panen</b> bagi petani.
@@ -534,7 +714,8 @@ def main():
     """, unsafe_allow_html=True)
 
     # --- INLINE MOBILE CONTROL DRAWER ---
-    with st.expander("🎛️ Atur Skenario Simulasi (Ketuk untuk Ubah)", expanded=True):
+    expand_drawer = st.session_state["user_role"] != "Petani & Pengepul"
+    with st.expander("🎛️ Atur Skenario Simulasi (Ketuk untuk Ubah)", expanded=expand_drawer):
         jenis = st.radio(
             "1. Jenis Fasilitas Pascapanen",
             ["STA", "Cold Storage"],
@@ -608,7 +789,7 @@ def main():
 
     hasil, detail = simulasi(T, prod_ton, pilih, radius, susut, efek, kap, porsi_pare)
 
-    # --- 2x2 MOBILE KPI CARDS (FLAT HTML STRINGS - NO MARKDOWN CODE BLOCK BUG) ---
+    # --- 2x2 MOBILE KPI CARDS ---
     delta_t = -hasil["turun_menit"]
     delta_pct = -hasil["turun_persen"]
     cls_t = "kpi-delta-pos" if hasil["turun_menit"] > 0.1 else "kpi-delta-neutral"
@@ -688,17 +869,34 @@ def main():
         )
 
     # --- MOBILE SWIPEABLE TABS ---
-    tab1, tab2, tab3, tab4 = st.tabs([
+    tab_names = [
         "🗺️ Peta Zonasi",
         "🚜 Rute Petani",
         "📊 Grafik & Skenario",
         "📑 Data 26 Kec",
-    ])
+    ]
+    if st.session_state["user_role"] == "Petani & Pengepul":
+        tab_names = [
+            "🚜 Rute Petani",
+            "🗺️ Peta Zonasi",
+            "📊 Grafik & Skenario",
+            "📑 Data 26 Kec",
+        ]
+    elif st.session_state["user_role"] == "Peneliti & Akademisi":
+        tab_names = [
+            "📊 Grafik & Skenario",
+            "📑 Data 26 Kec",
+            "🗺️ Peta Zonasi",
+            "🚜 Rute Petani",
+        ]
+
+    tabs = st.tabs(tab_names)
+    tab_map = dict(zip(tab_names, tabs))
 
     # ========================================================================
-    # TAB 1: PETA INTERAKTIF (STACKED VERTICALLY FOR SMARTPHONE)
+    # TAB 1: PETA INTERAKTIF
     # ========================================================================
-    with tab1:
+    with tab_map["🗺️ Peta Zonasi"]:
         st.markdown('<div class="panel-header">Peta Zonasi Layanan & Pengalihan Arus</div>', unsafe_allow_html=True)
         st.markdown('<div class="panel-sub">Ketuk lingkaran kecamatan pada peta untuk melihat detail waktu tempuh & titik setor terdekat.</div>', unsafe_allow_html=True)
 
@@ -837,9 +1035,9 @@ def main():
         )
 
     # ========================================================================
-    # TAB 2: KALKULATOR RUTE PETANI & PENGEPUL (MOBILE CARD)
+    # TAB 2: KALKULATOR RUTE PETANI & PENGEPUL
     # ========================================================================
-    with tab2:
+    with tab_map["🚜 Rute Petani"]:
         st.markdown('<div class="panel-header">🚜 Kalkulator Rute Setor Panen</div>', unsafe_allow_html=True)
         st.markdown('<div class="panel-sub">Cek titik setor terdekat & penghematan susut panen langsung dari HP Anda.</div>', unsafe_allow_html=True)
 
@@ -893,9 +1091,9 @@ def main():
         st.dataframe(pd.DataFrame(tabel_opsi).sort_values("Waktu (mnt)"), hide_index=True, use_container_width=True)
 
     # ========================================================================
-    # TAB 3: ANALISIS SKENARIO & SENSITIVITAS (SINGLE-COLUMN MOBILE CHARTS)
+    # TAB 3: ANALISIS SKENARIO & SENSITIVITAS
     # ========================================================================
-    with tab3:
+    with tab_map["📊 Grafik & Skenario"]:
         k_bandingan = max(len(pilih), 1)
         opsi = {
             f"Skenario Aktif ({k_bandingan} Unit)": pilih,
@@ -1005,7 +1203,7 @@ def main():
     # ========================================================================
     # TAB 4: DATA TERPADU & METODOLOGI
     # ========================================================================
-    with tab4:
+    with tab_map["📑 Data 26 Kec"]:
         st.markdown('<div class="panel-header">Data Terpadu 26 Kecamatan Kab. Kediri</div>', unsafe_allow_html=True)
         master = ind.merge(
             detail[["Kecamatan", "t_ke_pare_menit", "t_skenario_menit", "turun_menit", "dilayani"]],
