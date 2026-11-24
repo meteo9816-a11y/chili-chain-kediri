@@ -1,0 +1,1 @@
+{"version": 2, "builds": [{"src": "index.html", "use": "@vercel/static"}, {"src": "*.csv", "use": "@vercel/static"}, {"src": "hasil_modul1/*.csv", "use": "@vercel/static"}, {"src": "hasil_modul5/*.csv", "use": "@vercel/static"}]} 
